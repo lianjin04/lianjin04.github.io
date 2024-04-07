@@ -180,10 +180,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-04-04 23:04:25 / 修改时间：23:32:12" itemprop="dateCreated datePublished" datetime="2024-04-04T23:04:25+08:00">2024-04-04</time>
+              <time title="创建时间：2024-04-04 23:04:25" itemprop="dateCreated datePublished" datetime="2024-04-04T23:04:25+08:00">2024-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-07 23:13:12" itemprop="dateModified" datetime="2024-04-07T23:13:12+08:00">2024-04-07</time>
+              </span>
 
           
 
@@ -201,6 +207,12 @@
 
 <p>简单的看一眼，发现P，Q都是低指数加密，简单的爆破一下开出来就可以得到p，q了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def modroot(c,e,n):</span><br><span class="line">    for i in range(100): </span><br><span class="line">        m=c+i*n</span><br><span class="line">        if gmpy2.iroot(m,e)[0]:</span><br><span class="line">            return gmpy2.iroot(m,e)[0]</span><br><span class="line">p=modroot(P,2,n)</span><br><span class="line">q=modroot(Q,2,n)</span><br><span class="line">r=n//(p*q)</span><br><span class="line">d=inverse(e,(p-1)*(q-1)*(r-1))</span><br><span class="line">print(long_to_bytes(pow(c,d,n)))</span><br></pre></td></tr></table></figure>
+
+<p>**BJDCTF 2020EasyRSA **<em>2024.4.7</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">p = getPrime(1024)</span><br><span class="line">q = getPrime(1024)</span><br><span class="line">e = 6553</span><br><span class="line">n = p * q</span><br><span class="line"></span><br><span class="line">z = Fraction(1, Derivative(arctan(p), p)) - Fraction(1, Derivative(arth(q), q))</span><br><span class="line"></span><br><span class="line">m = bytes_to_long(flag)</span><br><span class="line">c = pow(m, e, n)</span><br><span class="line"></span><br><span class="line">print(c, z, n)</span><br></pre></td></tr></table></figure>
+
+<p>看题目后，发现主要需要解决的是z与p，q的关系，发现是p的正切求导的倒数减去q反切求导的倒数，所以可以发现数学关系<br>$$<br>z&#x3D;p^2+q^2<br>$$<br>于是我们还可以的得到这样的两个式子<br>$$<br>(p+q)^2&#x3D;z+2<em>n,(p-q)^2&#x3D;z-2</em>n<br>$$<br>开方得到p，q</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pq1=gmpy2.iroot(z+2*n,2)[0]</span><br><span class="line">pq2=gmpy2.iroot(z-2*n,2)[0]</span><br><span class="line"></span><br><span class="line">p=(pq1+pq2)//2</span><br><span class="line">q=(pq1-pq2)//2</span><br><span class="line">d=gmpy2.invert(e, (p-1)*(q-1))</span><br><span class="line">m=pow(c,d,n)</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
       
