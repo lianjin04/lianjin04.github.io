@@ -188,7 +188,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-14 01:29:55" itemprop="dateModified" datetime="2024-04-14T01:29:55+08:00">2024-04-14</time>
+                <time title="修改时间：2024-04-14 12:41:41" itemprop="dateModified" datetime="2024-04-14T12:41:41+08:00">2024-04-14</time>
               </span>
 
           
@@ -207,7 +207,8 @@
 
 <p>看了一眼，发现是一种类似Paillier算法的加密，搜索查看了</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/557034854">应用密码学 | Paillier同态加密算法简介 - 知乎 (zhihu.com)</a></p>
-<p>发现了其中有关二项式定理的部分，<img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20240414011717606.png" alt="image-20240414011717606"></p>
+<p>发现了其中有关二项式定理的部分</p>
+<p>![001](C:\Users\Lenovo\Pictures\Screenshots\屏幕截图 2024-04-14 011712.png)</p>
 <p>发现题目中用p代替了m，一番推理找到了求解p的方法。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#首先求出</span><br><span class="line">c_1=c*inverse(hint,n**2)%n**2</span><br><span class="line">#从之前了解到的，c_1=p*n+1 modn**2</span><br><span class="line">#c_1=p*n+1+k*n**2 -&gt; (c_1-1)/n=p+k*n=p*(1+k*q)</span><br><span class="line">#发现c_1有一个因子p所以，p=gcd((c_1-1)//n,n)</span><br><span class="line">c_1=c*inverse(hint,n**2)%n**2</span><br><span class="line">p=gmpy2.gcd((c_1-1)//n,n)</span><br><span class="line">q=n//p</span><br><span class="line">d=inverse(n,(p-1)*(q-1))</span><br><span class="line">m=pow(hint,d,n)</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
