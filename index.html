@@ -157,6 +157,68 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/12/CSC%E5%AD%97%E8%8A%82%E7%BF%BB%E8%BD%AC%E6%94%BB%E5%87%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q1.qlogo.cn/g?b=qq&nk=2033114871&s=640">
+      <meta itemprop="name" content="lianjin">
+      <meta itemprop="description" content="想回到过去 试着让故事继续">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="L_怜锦锦锦の小屋">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/05/12/CSC%E5%AD%97%E8%8A%82%E7%BF%BB%E8%BD%AC%E6%94%BB%E5%87%BB/" class="post-title-link" itemprop="url">CSC字节翻转攻击</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-05-12 22:29:39 / 修改时间：22:37:53" itemprop="dateCreated datePublished" datetime="2024-05-12T22:29:39+08:00">2024-05-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>CSC字节翻转攻击</strong></p>
+<p>突然遇见了需要这个的，了解了一下，大概改了改一个古老的脚本，能用了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">from base64 import b64encode</span><br><span class="line">import base64</span><br><span class="line">from Crypto.Cipher import AES</span><br><span class="line">from Crypto.Util.Padding import pad, unpad</span><br><span class="line">def cbc_bit_attack_mul(c, m, position, target):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    实现CBC模式下的位攻击算法 通过修改密文中的特定位来达到解密的目的。</span><br><span class="line">    </span><br><span class="line">    参数:</span><br><span class="line">    - c: 密文 类型为bytes。</span><br><span class="line">    - m: 明文，类型为字符串。</span><br><span class="line">    - position: 需要修改的位的位置列表 索引从16开始计数。</span><br><span class="line">    - target: 目标位的值列表 与position列表元素一一对应 元素为字符。</span><br><span class="line"></span><br><span class="line">    返回值:</span><br><span class="line">    - 修改后的密文 类型为bytes。</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    l = len(position)</span><br><span class="line">    r = bytearray.fromhex(c)  # 初始化变量r为密文c的副本，并将其转换为字节串</span><br><span class="line">    for i in range(l):</span><br><span class="line">        change = position[i] # 计算在密文中需要修改的位置</span><br><span class="line">        tmp = chr(r[change] ^ ord(m[position[i]]) ^ ord(target[i]))</span><br><span class="line">        r[change] = ord(tmp)</span><br><span class="line">    return bytes(r)</span><br><span class="line"></span><br><span class="line">m = &#x27;&#123;&quot;admin&quot;: 0, &quot;username&quot;: &quot;user1&quot;&#125;&#x27;</span><br><span class="line">m=str(m) # 待加密的明文</span><br><span class="line">print(m)</span><br><span class="line">key = &quot;1234567890abcdef&quot; # 加密密钥</span><br><span class="line">iv = &quot;fedcba0987654321&quot;  # 初始向量</span><br><span class="line">cipher = AES.new(key.encode(), AES.MODE_CBC, iv.encode())  </span><br><span class="line">#c = cipher.encrypt(m.encode())  # 加密明文，并打印加密后的密文的十六进制表示</span><br><span class="line">c=b64encode(iv.encode() + cipher.encrypt(pad(m.encode(), AES.block_size)))</span><br><span class="line">decoded_c = base64.b64decode(c)</span><br><span class="line">c = decoded_c.hex()</span><br><span class="line">print(c)</span><br><span class="line">c_new = cbc_bit_attack_mul(c, m, [11 - 1], [&#x27;1&#x27;])  # 使用位攻击算法修改密文</span><br><span class="line">print(b64encode(c_new))</span><br><span class="line">cipher = AES.new(key.encode(), AES.MODE_CBC, iv.encode())  # 创建AES解密对象</span><br><span class="line">m = cipher.decrypt(c_new)  # 解密修改后的密文，并打印解密结果</span><br><span class="line">print(m)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/09/CryptoHack%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -607,14 +669,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
