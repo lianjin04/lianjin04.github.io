@@ -237,14 +237,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span></span>
+              <span>2.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>NaN:aN</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -258,40 +258,42 @@
       
         <p><strong>HDCTF2023Normalrsa(revenge)</strong> <em>2024.4.4</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">#from shin import flag</span><br><span class="line">m=bytes_to_long(b&#x27;HDCTF&#123;******&#125;&#x27;)</span><br><span class="line">e=65537</span><br><span class="line">p=getPrime(256)</span><br><span class="line">q=getPrime(512)</span><br><span class="line">r=getPrime(512)</span><br><span class="line">n=p*q*r</span><br><span class="line">P=pow(p,2,n)</span><br><span class="line">Q=pow(q,2,n)</span><br><span class="line">c=pow(m,e,n)</span><br><span class="line">print(f&quot;P = &#123;P&#125;&quot;)</span><br><span class="line">print(f&quot;Q = &#123;Q&#125;&quot;)</span><br><span class="line">print(f&quot;n = &#123;n&#125;&quot;)</span><br><span class="line">print(f&quot;c = &#123;c&#125;&quot;)</span><br></pre></td></tr></table></figure>
-
 <p>简单的看一眼，发现P，Q都是低指数加密，简单的爆破一下开出来就可以得到p，q了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def modroot(c,e,n):</span><br><span class="line">    for i in range(100): </span><br><span class="line">        m=c+i*n</span><br><span class="line">        if gmpy2.iroot(m,e)[0]:</span><br><span class="line">            return gmpy2.iroot(m,e)[0]</span><br><span class="line">p=modroot(P,2,n)</span><br><span class="line">q=modroot(Q,2,n)</span><br><span class="line">r=n//(p*q)</span><br><span class="line">d=inverse(e,(p-1)*(q-1)*(r-1))</span><br><span class="line">print(long_to_bytes(pow(c,d,n)))</span><br></pre></td></tr></table></figure>
-
-
-
 <p><strong>BJDCTF2020EasyRSA</strong>  <em>2024.4.7</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">p = getPrime(1024)</span><br><span class="line">q = getPrime(1024)</span><br><span class="line">e = 6553</span><br><span class="line">n = p * q</span><br><span class="line"></span><br><span class="line">z = Fraction(1, Derivative(arctan(p), p)) - Fraction(1, Derivative(arth(q), q))</span><br><span class="line"></span><br><span class="line">m = bytes_to_long(flag)</span><br><span class="line">c = pow(m, e, n)</span><br><span class="line"></span><br><span class="line">print(c, z, n)</span><br></pre></td></tr></table></figure>
-
-<p>看题目后，发现主要需要解决的是z与p，q的关系，发现是p的正切求导的倒数减去q反切求导的倒数，所以可以发现数学关系<br>$$<br>z&#x3D;p^2+q^2<br>$$<br>于是我们还可以的得到这样的两个式子<br>$$<br>(p+q)^2&#x3D;z+2<em>n,(p-q)^2&#x3D;z-2</em>n<br>$$<br>开方得到p，q</p>
+<p>看题目后，发现主要需要解决的是z与p，q的关系，发现是p的正切求导的倒数减去q反切求导的倒数，所以可以发现数学关系</p>
+<script type="math/tex; mode=display">
+z=p^2+q^2</script><p>于是我们还可以的得到这样的两个式子</p>
+<script type="math/tex; mode=display">
+(p+q)^2=z+2*n,(p-q)^2=z-2*n</script><p>开方得到p，q</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pq1=gmpy2.iroot(z+2*n,2)[0]</span><br><span class="line">pq2=gmpy2.iroot(z-2*n,2)[0]</span><br><span class="line"></span><br><span class="line">p=(pq1+pq2)//2</span><br><span class="line">q=(pq1-pq2)//2</span><br><span class="line">d=gmpy2.invert(e, (p-1)*(q-1))</span><br><span class="line">m=pow(c,d,n)</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
 <p><strong>鹤城杯2021BabyRSA</strong> <em>2024.4.8</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">p = getPrime(1024)</span><br><span class="line">q = getPrime(1024)</span><br><span class="line">n = p * q</span><br><span class="line">e = 65537</span><br><span class="line">hint1 = p &gt;&gt; 724</span><br><span class="line">hint2 = q % (2 ** 265)</span><br><span class="line">ct = pow(bytes_to_long(flag), e, n)</span><br><span class="line">print(hint1)</span><br><span class="line">print(hint2)</span><br><span class="line">print(n)</span><br><span class="line">print(ct)</span><br></pre></td></tr></table></figure>
-
-<p>题目条件给出了p的高300位，以及q的低256位，首先可以从如下关系中得到p的低256位<br>$$<br>n≡pl∗q l(mod2^{256})\<br>pl≡n∗ql^−1(mod2^{256})<br>$$<br>p剩余的位数使用coppersmith求解，直接求解发现失败，尝试爆破几位后得到。</p>
+<p>题目条件给出了p的高300位，以及q的低256位，首先可以从如下关系中得到p的低256位</p>
+<script type="math/tex; mode=display">
+n≡pl∗q l(mod2^{256})\\
+pl≡n∗ql^−1(mod2^{256})</script><p>p剩余的位数使用coppersmith求解，直接求解发现失败，尝试爆破几位后得到。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mi=2**265</span><br><span class="line">qh=hint1&lt;&lt;724</span><br><span class="line">ql=n*inverse(hint2,mi)%mi</span><br><span class="line">pxp=qh+ql</span><br><span class="line">PR.&lt;x&gt;=PolynomialRing(Zmod(n))</span><br><span class="line">for i in range(64):</span><br><span class="line">    f=pxp+x*64*mi+i*mi</span><br><span class="line">    f=f.monic()</span><br><span class="line">    xpx=f.small_roots(2**453,0.4)</span><br><span class="line">    if len(xpx):</span><br><span class="line">        print(xpx[0])</span><br><span class="line">        break</span><br><span class="line">p=int(pxp+xpx[0]*64*mi+i*mi)</span><br><span class="line">print(n%p)</span><br><span class="line">q=n//p</span><br><span class="line">d=inverse(e,(p-1)*(q-1))</span><br><span class="line">flag=int(pow(ct,d,n))</span><br><span class="line">print(long_to_bytes(flag))</span><br></pre></td></tr></table></figure>
-
 <p><em>2024.4.9</em></p>
 <p>今天做的题相对简单，只有简单的古典加密，基础的欧拉函数，以及可以直接分解n的一幕，简单的维纳攻击，不写了。</p>
 <p><strong>红明谷CTF2022easy_ya</strong> <em>2024.4.10</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from flag import flag</span><br><span class="line">def gen():</span><br><span class="line">    e = 3</span><br><span class="line">    while True:</span><br><span class="line">        try:</span><br><span class="line">            p = getPrime(512)</span><br><span class="line">            q = getPrime(512)</span><br><span class="line">            n = p*q</span><br><span class="line">            phi = (p-1)*(q-1)</span><br><span class="line">            d = inverse(e,phi)</span><br><span class="line">            return p,q,d,n,e</span><br><span class="line">        except:</span><br><span class="line">            continue</span><br><span class="line">    return</span><br><span class="line">p,q,d,n,e = gen()</span><br><span class="line">r = getPrime(512)</span><br><span class="line">m = bytes_to_long(flag+os.urandom(32))</span><br><span class="line">M = m%r</span><br><span class="line">c = pow(m,e,n)</span><br><span class="line">print(&quot;r = %d&quot;%r)</span><br><span class="line">print(&quot;M = %d&quot;%M)</span><br><span class="line">print(&quot;n = %d&quot;%n)</span><br><span class="line">print(&quot;e = %d&quot;%e)</span><br><span class="line">print(&quot;c = %d&quot;%c)</span><br></pre></td></tr></table></figure>
-
-<p>根据题目已知<br>$$<br>m&#x3D;M+k<em>r\<br>c≡(M+k</em>r)modn\<br>$$<br>根据等式使用CopperSmith求解k</p>
+<p>根据题目已知</p>
+<script type="math/tex; mode=display">
+m=M+k*r\\
+c≡(M+k*r)modn\\</script><p>根据等式使用CopperSmith求解k</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">from gmpy2  import *</span><br><span class="line">PR.&lt;x&gt;=PolynomialRing(Zmod(n))</span><br><span class="line">f=(M+x*r)**3-c</span><br><span class="line">f=f.monic()</span><br><span class="line">k=f.small_roots()</span><br><span class="line">m=k[0]*r+M</span><br><span class="line">print(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
-
 <p><strong>LitCTF2023Euler</strong> <em>2024.4.10</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from secret import flag</span><br><span class="line">m = bytes_to_long(flag)</span><br><span class="line">p = getPrime(512)</span><br><span class="line">q = getPrime(512)</span><br><span class="line">n = p*q</span><br><span class="line">c = pow(m,n-p-q+3,n)</span><br><span class="line">print(f&#x27;n = &#123;n&#125;&#x27;)</span><br><span class="line">print(f&#x27;c = &#123;c&#125;&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>根据题目 c &#x3D; pow(m,n-p-q+3,n)<br>$$<br>其中，<br>c≡m^{n-p-q+3}(modn)\<br>c≡m^{(p-1)(q-1)+2}(modn)\<br>又，m^{\phi(n)}≡m^{(p-1)(q-1)}≡1（mod）n\<br>所以，c≡m^2(modn)<br>$$<br>直接开方即可得m</p>
+<p>根据题目 c = pow(m,n-p-q+3,n)</p>
+<script type="math/tex; mode=display">
+其中，
+c≡m^{n-p-q+3}(modn)\\
+c≡m^{(p-1)(q-1)+2}(modn)\\
+又，m^{\phi(n)}≡m^{(p-1)(q-1)}≡1（mod）n\\
+所以，c≡m^2(modn)</script><p>直接开方即可得m</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def modroot(c,e,n):</span><br><span class="line">    for i in range(512): </span><br><span class="line">        m=c+i*n</span><br><span class="line">        if gmpy2.iroot(m,e)[0]:</span><br><span class="line">            return gmpy2.iroot(m,e)[0]</span><br><span class="line">m=int(modroot(c,2,n))</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -394,7 +396,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

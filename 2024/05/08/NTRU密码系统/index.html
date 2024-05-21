@@ -237,14 +237,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span></span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>NaN:aN</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -259,16 +259,13 @@
         <p>NTRN</p>
 <p>做题遇见了这种密码系统，没见过，写一下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>():</span><br><span class="line">    p = getPrime(<span class="number">2048</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">        y = getPrime(<span class="number">768</span>)</span><br><span class="line">        z = gmpy2.invert(x, p) * y % p</span><br><span class="line">        <span class="keyword">return</span> (p, x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">cipher, p, z</span>):</span><br><span class="line">    message = bytes_to_long(cipher)</span><br><span class="line">    r = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">    c = (r * z + message) % p</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line">p, x, y, z = init()</span><br><span class="line">c = encrypt(flag, p, z)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;cipher.txt&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&quot;binz = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(z)) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    f.write(<span class="string">&quot;binp = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(p)) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    f.write(<span class="string">&quot;binc = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(c)) + <span class="string">&quot;\n&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <p>先看了看别人的wp学了一下，然后补补基础知识。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">z=int(binz,2)</span><br><span class="line">p=int(binp,2)</span><br><span class="line">c=int(binc,2)</span><br><span class="line">def decrypto(z,p,c):</span><br><span class="line">    M=Matrix(ZZ,[[1,z],</span><br><span class="line">                 [0,p]])</span><br><span class="line">    x,y=M.LLL()[0]</span><br><span class="line">    print(x,y)</span><br><span class="line">    x=abs(x)</span><br><span class="line">    y=abs(y)</span><br><span class="line">    m=(c*x)%p*int(inverse(x,y))%y</span><br><span class="line">    return m</span><br><span class="line">m=decrypto(z,p,c)</span><br><span class="line">print(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>NTRU公钥密码系统是由Hoffstein, Pipher和 Silverman在1996年所发明的，是目前已知最快的公钥密码系统之一，并且提供加密(NTRUencrypt)和数字签名(NTRUSign)方案。NTRU由多项式的卷积所构成，它基于格上的最短向量问题(SVP)。NTRU采用截断多项式环(Truncated Polynomial Rings)来实现对数据进行加密和解密。</p>
 <p>RSA,ECC和ElGamal等公钥密码系统的安全性是基于大整数分解难题或离散对数问题，这些数学问题很容易被量子计算机攻破。因此在可预见的未来它们有被破解的风险。而NTRU在原理上，可以被认为是能够抵抗量子计算机攻击的，这是NTRU密码系统的优势之一。因为NTRU的安全性是基于SVP问题，而目前还没有算法可以在多项式时间内解决这个问题。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><strong>1.多项式环</strong><br>$$<br>f(x)&#x3D;<br>$$</p>
-
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><strong>1.多项式环</strong></p>
+<script type="math/tex; mode=display">
+f(x)=</script>
     </div>
 
     
@@ -374,7 +371,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
