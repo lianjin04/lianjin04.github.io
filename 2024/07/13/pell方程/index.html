@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Encoding Challenge123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384from Crypto.Util.number">
+  <meta name="description" content="佩尔方程(pell方程)第一类佩尔方程形如：$x^2-dy^2&#x3D;1$  ,(d&gt;1,且d不是完全平方数) , 要求第一类佩尔方程的解都是正整数解,即( x , y ) , x&gt;0 , y&gt;0。 ​    方程存在无数个解，要求最小整数解的话，只要枚举y的值直到x为整数即可。 想要得到所有解，我们就要推导通解公式，过程如下。  首先，设(x1,y1),(x2,y2)为方程的两个特解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CryptoHack-GENERAL">
-<meta property="og:url" content="http://example.com/2024/05/09/CryptoHack%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:title" content="pell方程">
+<meta property="og:url" content="http://example.com/2024/07/13/pell%E6%96%B9%E7%A8%8B/index.html">
 <meta property="og:site_name" content="L_怜锦锦锦の小屋">
-<meta property="og:description" content="Encoding Challenge123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384from Crypto.Util.number">
+<meta property="og:description" content="佩尔方程(pell方程)第一类佩尔方程形如：$x^2-dy^2&#x3D;1$  ,(d&gt;1,且d不是完全平方数) , 要求第一类佩尔方程的解都是正整数解,即( x , y ) , x&gt;0 , y&gt;0。 ​    方程存在无数个解，要求最小整数解的话，只要枚举y的值直到x为整数即可。 想要得到所有解，我们就要推导通解公式，过程如下。  首先，设(x1,y1),(x2,y2)为方程的两个特解">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-09T06:51:55.000Z">
-<meta property="article:modified_time" content="2024-05-21T08:59:54.461Z">
+<meta property="article:published_time" content="2024-07-13T14:22:14.000Z">
+<meta property="article:modified_time" content="2024-07-13T16:05:42.131Z">
 <meta property="article:author" content="lianjin">
 <meta property="article:tag" content="Crypto">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2024/05/09/CryptoHack%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/">
+<link rel="canonical" href="http://example.com/2024/07/13/pell%E6%96%B9%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>CryptoHack-GENERAL | L_怜锦锦锦の小屋</title>
+  <title>pell方程 | L_怜锦锦锦の小屋</title>
   
 
 
@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/09/CryptoHack%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/13/pell%E6%96%B9%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q1.qlogo.cn/g?b=qq&nk=2033114871&s=640">
@@ -204,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CryptoHack-GENERAL
+          pell方程
         </h1>
 
         <div class="post-meta">
@@ -214,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2024-05-09 14:51:55" itemprop="dateCreated datePublished" datetime="2024-05-09T14:51:55+08:00">2024-05-09</time>
+              <time title="创建时间：2024-07-13 22:22:14" itemprop="dateCreated datePublished" datetime="2024-07-13T22:22:14+08:00">2024-07-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-21 16:59:54" itemprop="dateModified" datetime="2024-05-21T16:59:54+08:00">2024-05-21</time>
+                <time title="修改时间：2024-07-14 00:05:42" itemprop="dateModified" datetime="2024-07-14T00:05:42+08:00">2024-07-14</time>
               </span>
 
           
@@ -237,14 +237,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
+              <span>2.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -256,9 +256,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Encoding-Challenge"><a href="#Encoding-Challenge" class="headerlink" title="Encoding Challenge"></a>Encoding Challenge</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from Crypto.Util.number import bytes_to_long, long_to_bytes</span><br><span class="line">from utils import listener </span><br><span class="line">import base64</span><br><span class="line">import codecs</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line"># 定义挑战中使用的FLAG</span><br><span class="line">FLAG = &quot;crypto&#123;????????????????????&#125;&quot;</span><br><span class="line"># 定义可用于编码的类型</span><br><span class="line">ENCODINGS = [</span><br><span class="line">    &quot;base64&quot;,</span><br><span class="line">    &quot;hex&quot;,</span><br><span class="line">    &quot;rot13&quot;,</span><br><span class="line">    &quot;bigint&quot;,</span><br><span class="line">    &quot;utf-8&quot;,</span><br><span class="line">]</span><br><span class="line"># 从字典文件中加载单词，用于挑战</span><br><span class="line">with open(&#x27;/usr/share/dict/words&#x27;) as f:</span><br><span class="line">    WORDS = [line.strip().replace(&quot;&#x27;&quot;, &quot;&quot;) for line in f.readlines()]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Challenge():</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    这个类定义了一个挑战的结构和行为，包括创建挑战关卡和处理用户输入。</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init__(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        初始化挑战类实例。</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.challenge_words = &quot;&quot; # 存储当前挑战使用的单词</span><br><span class="line">        self.stage = 0 # 当前挑战阶段</span><br><span class="line"></span><br><span class="line">    def create_level(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        创建一个新的挑战关卡，随机选择一个编码方式对挑战单词进行编码。</span><br><span class="line"></span><br><span class="line">        返回:</span><br><span class="line">            一个字典，包含编码类型和编码后的字符串。</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.stage += 1</span><br><span class="line">        self.challenge_words = &quot;_&quot;.join(random.choices(WORDS, k=3)) # 从单词列表中随机选择三个单词作为挑战</span><br><span class="line"></span><br><span class="line">        # 随机选择一个编码方式</span><br><span class="line">        encoding = random.choice(ENCODINGS)</span><br><span class="line"></span><br><span class="line">        # 根据选择的编码方式进行编码</span><br><span class="line">        if encoding == &quot;base64&quot;:</span><br><span class="line">            encoded = base64.b64encode(self.challenge_words.encode()).decode()</span><br><span class="line">        elif encoding == &quot;hex&quot;:</span><br><span class="line">            encoded = self.challenge_words.encode().hex()</span><br><span class="line">        elif encoding == &quot;rot13&quot;:</span><br><span class="line">            encoded = codecs.encode(self.challenge_words, &#x27;rot_13&#x27;)</span><br><span class="line">        elif encoding == &quot;bigint&quot;:</span><br><span class="line">            encoded = hex(bytes_to_long(self.challenge_words.encode()))</span><br><span class="line">        elif encoding == &quot;utf-8&quot;:</span><br><span class="line">            encoded = [ord(b) for b in self.challenge_words]</span><br><span class="line"></span><br><span class="line">        return &#123;&quot;type&quot;: encoding, &quot;encoded&quot;: encoded&#125;</span><br><span class="line"></span><br><span class="line">    def challenge(self, your_input):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        处理用户输入，检查是否正确解码了挑战单词。</span><br><span class="line"></span><br><span class="line">        返回:</span><br><span class="line">            如果成功解码，返回一个新的挑战关卡；如果解码失败，返回错误信息。</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # 初始阶段，返回第一个挑战</span><br><span class="line">        if self.stage == 0:</span><br><span class="line">            return self.create_level()</span><br><span class="line">        # 如果达到最终阶段，返回FLAG</span><br><span class="line">        elif self.stage == 100:</span><br><span class="line">            self.exit = True</span><br><span class="line">            return &#123;&quot;flag&quot;: FLAG&#125;</span><br><span class="line"></span><br><span class="line">        # 检查用户输入是否与当前挑战的解码结果匹配</span><br><span class="line">        if self.challenge_words == your_input[&quot;decoded&quot;]:</span><br><span class="line">            return self.create_level() # 如果匹配，进入下一关</span><br><span class="line"></span><br><span class="line">        return &#123;&quot;error&quot;: &quot;Decoding fail&quot;&#125; # 解码失败，返回错误信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 启动服务器监听端口</span><br><span class="line">listener.start_server(port=13377)</span><br></pre></td></tr></table></figure>
-<p>题目给出5种编码格式，挨个解码即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">from pwn import * # pip install pwntools</span><br><span class="line">import json</span><br><span class="line">import base64</span><br><span class="line">import codecs</span><br><span class="line">from Crypto.Util.number import bytes_to_long,long_to_bytes</span><br><span class="line"></span><br><span class="line">r = remote(&#x27;socket.cryptohack.org&#x27;, 13377, level = &#x27;debug&#x27;)</span><br><span class="line"></span><br><span class="line">def json_recv():</span><br><span class="line">    line = r.recvline()</span><br><span class="line">    return json.loads(line.decode())</span><br><span class="line"></span><br><span class="line">def json_send(hsh):</span><br><span class="line">    request = json.dumps(hsh).encode()</span><br><span class="line">    r.sendline(request)</span><br><span class="line"></span><br><span class="line">for i in range(100):</span><br><span class="line">    received = json_recv()</span><br><span class="line"></span><br><span class="line">    print(&quot;Received type: &quot;)</span><br><span class="line">    print(received[&quot;type&quot;])</span><br><span class="line">    print(&quot;Received encoded value: &quot;)</span><br><span class="line">    print(received[&quot;encoded&quot;])</span><br><span class="line"></span><br><span class="line">    if received[&quot;type&quot;]== &quot;base64&quot;:</span><br><span class="line">                encoded = base64.b64decode(received[&quot;encoded&quot;].encode()).decode()</span><br><span class="line">    elif received[&quot;type&quot;] == &quot;hex&quot;:</span><br><span class="line">                encoded_bytes = bytes.fromhex(received[&quot;encoded&quot;]) </span><br><span class="line">                encoded = encoded_bytes.decode()</span><br><span class="line">    elif received[&quot;type&quot;] == &quot;rot13&quot;:</span><br><span class="line">                encoded = codecs.decode(received[&quot;encoded&quot;], &#x27;rot_13&#x27;)</span><br><span class="line">    elif received[&quot;type&quot;] == &quot;bigint&quot;:</span><br><span class="line">                encoded = long_to_bytes(int(received[&quot;encoded&quot;],16)).decode(&#x27;utf-8&#x27;)</span><br><span class="line">    elif received[&quot;type&quot;] == &quot;utf-8&quot;:</span><br><span class="line">                encoded = &quot;&quot;.join(chr(b) for b in received[&quot;encoded&quot;])</span><br><span class="line"></span><br><span class="line">    to_send = &#123;</span><br><span class="line">        &quot;decoded&quot;: encoded</span><br><span class="line">    &#125;</span><br><span class="line">    json_send(to_send)</span><br><span class="line"></span><br><span class="line">json_recv()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h1 id="佩尔方程-pell方程"><a href="#佩尔方程-pell方程" class="headerlink" title="佩尔方程(pell方程)"></a>佩尔方程(pell方程)</h1><h3 id="第一类佩尔方程"><a href="#第一类佩尔方程" class="headerlink" title="第一类佩尔方程"></a>第一类佩尔方程</h3><p>形如：$x^2-dy^2=1$  ,(d&gt;1,且d不是完全平方数) , 要求第一类佩尔方程的解都是正整数解,即( x , y ) , x&gt;0 , y&gt;0。</p>
+<p>​    方程存在无数个解，要求最小整数解的话，只要枚举y的值直到x为整数即可。</p>
+<p>想要得到所有解，我们就要推导通解公式，过程如下。</p>
+<script type="math/tex; mode=display">
+首先，设(x1,y1),(x2,y2)为方程的两个特解。\\
+(1)\;\;x_1^2-dy_1^2=1\\
+(2)\;\;x_2^2-dy_2^2=1\\
+两式相乘：\;(x_1^2-dy_1^2)\,(x_2^2-dy_2^2)=1\\
+展开:x_1^2x_2^2-dx_1^2y_2^2-dy_1^2x_2^2+-d2_1^2y_2^2=1\\
+一顿化简可以得到： (x_1x_2-dy_1y_2)^2-d(x_1y_2+x_2y_1)^2=1\\
+所以\;x_3=x_1x_2-dy_1y_2\quad y_3=x_1y_2+x_2y_1x_1y_2+x_2y_1\\
+得到通项公式为: x_n=x_{n-1}x_1-dy_{n-1}y_1\\ \quad \quad \quad \quad \quad \quad y_n=x_{n-1}y_1+x_1y_{n-1}\\</script><p>这样的话我们只要知道第一个特解( x~1~, y~1~)，和第n-1个特解,就能够求出第n个解,我们这时候可以用矩阵快速幂,以O(log n)的复杂度来就快速求取，第n个解。</p>
+<h3 id="第二类佩尔方程"><a href="#第二类佩尔方程" class="headerlink" title="第二类佩尔方程"></a>第二类佩尔方程</h3><p>形如：$x^2-dy^2=k$ 的方程叫做第二类佩尔方程。解第二类佩恩方程，需要用到第一类方程的解。</p>
+<p>过程与第一类大同小异</p>
+<script type="math/tex; mode=display">
+我们假设有\;x^2-dy^2=k \;的一个特解\;(p,q)\\
+又\;x^2-dy^2=1\;的正整数解为(x_1,y_1)\\
+两式相乘：(p^2-dq^2)(x_1^2-dy-1^2)=k\\
+推导得到：(px_1±dqy_1)^2-d(py_1±qx_1)^2=k\\
+所以通解为: x_n=x_1x_{n-1}±dy_{n-1}y_1\\
+\quad\quad\quad\quad y_n=x_{n-1}y_1±y_{n-1}x_1</script><p>可以转化为矩阵乘法的形式</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+x_n\\
+y_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+p&dq\\
+q&p
+\end{bmatrix}^{n-1}
+\begin{bmatrix}
+x_1\\
+y_1
+\end{bmatrix}</script><p>,这样就方便用矩阵快速幂求第k个解.</p>
+<p>给出一些求解脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#连分数求解pell方程最小整数解</span></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt, floor</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pell_solver</span>(<span class="params">D</span>):</span><br><span class="line">    a0 = floor(sqrt(D))</span><br><span class="line">    <span class="keyword">if</span> a0 * a0 == D:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    p0, p1 = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    q0, q1 = <span class="number">1</span>, a0</span><br><span class="line">    xn, yn = <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        an = floor((sqrt(D) + p1) / q1)</span><br><span class="line">        pn = an * q1 - p1</span><br><span class="line">        qn = (D - pn * pn) // q1</span><br><span class="line">        xn, xn_1 = an * xn + xn_1, xn</span><br><span class="line">        yn, yn_1 = an * yn + yn_1, yn</span><br><span class="line">        <span class="keyword">if</span> xn * xn - D * yn * yn == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> xn, yn</span><br><span class="line">       </span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> ceil,floor,sqrt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pell_minimum_solution</span>(<span class="params">n</span>):</span><br><span class="line">    a = []</span><br><span class="line">    m = floor(sqrt(n))</span><br><span class="line">    sq = sqrt(n)</span><br><span class="line">    a.append(m)</span><br><span class="line">    b = m</span><br><span class="line">    c = <span class="number">1</span></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> a[i-<span class="number">1</span>] != <span class="number">2</span> * a[<span class="number">0</span>]:</span><br><span class="line">        c = (n - b * b) / c</span><br><span class="line">        tmp = (sq + b) / c</span><br><span class="line">        a.append(floor(tmp))</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        b = a[i-<span class="number">1</span>] * c - b</span><br><span class="line">    p = <span class="number">1</span></span><br><span class="line">    q = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i-<span class="number">2</span>,-<span class="number">1</span>,-<span class="number">1</span>):</span><br><span class="line">        t = p</span><br><span class="line">        p = q + p * a[j]</span><br><span class="line">        q = t</span><br><span class="line">    <span class="keyword">if</span> (i-<span class="number">1</span>) % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        x0 = p</span><br><span class="line">        y0 = q</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        x0 = <span class="number">2</span> * p ** <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">        y0 = <span class="number">2</span> * p * q</span><br><span class="line">    <span class="keyword">return</span> x0,y0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve_pell</span>(<span class="params">N, numTry=<span class="number">1500</span></span>):</span><br><span class="line">    cf = continued_fraction(sqrt(N))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(numTry):</span><br><span class="line">        denom = cf.denominator(i)</span><br><span class="line">        numer = cf.numerator(i)</span><br><span class="line">        <span class="keyword">if</span> numer^<span class="number">2</span> - N * denom^<span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> numer, denom</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span>, <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sympy.solvers.diophantine.diophantine <span class="keyword">import</span> diop_DN</span><br><span class="line"><span class="comment"># sympy求解 x^2-Dy^2=N 输入(D,N)</span></span><br><span class="line">x = diop_DN(<span class="number">105279230912868770223946474836383391725923</span>//<span class="number">1293023064232431070902426583269468463</span>,<span class="number">1</span>)[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -277,13 +311,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/05/08/NTRU%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/" rel="prev" title="NTRU密码系统">
-      <i class="fa fa-chevron-left"></i> NTRU密码系统
+    <a href="/2024/06/07/Crypto-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-3/" rel="prev" title="Crypto 每日一题[3]">
+      <i class="fa fa-chevron-left"></i> Crypto 每日一题[3]
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/05/12/CBC%E5%AD%97%E8%8A%82%E7%BF%BB%E8%BD%AC%E6%94%BB%E5%87%BB/" rel="next" title="CBC字节翻转攻击">
-      CBC字节翻转攻击 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -342,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Encoding-Challenge"><span class="nav-number">1.</span> <span class="nav-text">Encoding Challenge</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%A9%E5%B0%94%E6%96%B9%E7%A8%8B-pell%E6%96%B9%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">佩尔方程(pell方程)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%B1%BB%E4%BD%A9%E5%B0%94%E6%96%B9%E7%A8%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">第一类佩尔方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB%E4%BD%A9%E5%B0%94%E6%96%B9%E7%A8%8B"><span class="nav-number">1.0.2.</span> <span class="nav-text">第二类佩尔方程</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -477,6 +508,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
