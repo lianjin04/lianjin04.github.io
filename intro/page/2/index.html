@@ -74,7 +74,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -242,7 +354,7 @@
 
       
           <p><strong>HDCTF2023Normalrsa(revenge)</strong> <em>2024.4.4</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">#from shin import flag</span><br><span class="line">m=bytes_to_long(b&#x27;HDCTF&#123;******&#125;&#x27;)</span><br><span class="line">e=65537</span><br><span class="line">p=getPrime(256)</span><br><span class="line">q=getPrime(512)</span><br><span class="line">r=getPrime(512)</span><br><span class="line">n=p*q*r</span><br><span class="line">P=pow(p,2,n)</span><br><span class="line">Q=pow(q,2,n)</span><br><span class="line">c=pow(m,e,n)</span><br><span class="line">print(f&quot;P = &#123;P&#125;&quot;)</span><br><span class="line">print(f&quot;Q = &#123;Q&#125;&quot;)</span><br><span class="line">print(f&quot;n = &#123;n&#125;&quot;)</span><br><span class="line">print(f&quot;c = &#123;c&#125;&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">#from shin import flag</span><br><span class="line">m=bytes_to_long(b'HDCTF{******}')</span><br><span class="line">e=65537</span><br><span class="line">p=getPrime(256)</span><br><span class="line">q=getPrime(512)</span><br><span class="line">r=getPrime(512)</span><br><span class="line">n=p*q*r</span><br><span class="line">P=pow(p,2,n)</span><br><span class="line">Q=pow(q,2,n)</span><br><span class="line">c=pow(m,e,n)</span><br><span class="line">print(f"P = {P}")</span><br><span class="line">print(f"Q = {Q}")</span><br><span class="line">print(f"n = {n}")</span><br><span class="line">print(f"c = {c}")</span><br></pre></td></tr></table></figure>
 <p>简单的看一眼，发现P，Q都是低指数加密，简单的爆破一下开出来就可以得到p，q了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def modroot(c,e,n):</span><br><span class="line">    for i in range(100): </span><br><span class="line">        m=c+i*n</span><br><span class="line">        if gmpy2.iroot(m,e)[0]:</span><br><span class="line">            return gmpy2.iroot(m,e)[0]</span><br><span class="line">p=modroot(P,2,n)</span><br><span class="line">q=modroot(Q,2,n)</span><br><span class="line">r=n//(p*q)</span><br><span class="line">d=inverse(e,(p-1)*(q-1)*(r-1))</span><br><span class="line">print(long_to_bytes(pow(c,d,n)))</span><br></pre></td></tr></table></figure>
 <p><strong>BJDCTF2020EasyRSA</strong>  <em>2024.4.7</em></p>
@@ -263,14 +375,14 @@ pl≡n∗ql^−1(mod2^{256})</script><p>p剩余的位数使用coppersmith求解�
 <p><em>2024.4.9</em></p>
 <p>今天做的题相对简单，只有简单的古典加密，基础的欧拉函数，以及可以直接分解n的一幕，简单的维纳攻击，不写了。</p>
 <p><strong>红明谷CTF2022easy_ya</strong> <em>2024.4.10</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from flag import flag</span><br><span class="line">def gen():</span><br><span class="line">    e = 3</span><br><span class="line">    while True:</span><br><span class="line">        try:</span><br><span class="line">            p = getPrime(512)</span><br><span class="line">            q = getPrime(512)</span><br><span class="line">            n = p*q</span><br><span class="line">            phi = (p-1)*(q-1)</span><br><span class="line">            d = inverse(e,phi)</span><br><span class="line">            return p,q,d,n,e</span><br><span class="line">        except:</span><br><span class="line">            continue</span><br><span class="line">    return</span><br><span class="line">p,q,d,n,e = gen()</span><br><span class="line">r = getPrime(512)</span><br><span class="line">m = bytes_to_long(flag+os.urandom(32))</span><br><span class="line">M = m%r</span><br><span class="line">c = pow(m,e,n)</span><br><span class="line">print(&quot;r = %d&quot;%r)</span><br><span class="line">print(&quot;M = %d&quot;%M)</span><br><span class="line">print(&quot;n = %d&quot;%n)</span><br><span class="line">print(&quot;e = %d&quot;%e)</span><br><span class="line">print(&quot;c = %d&quot;%c)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from flag import flag</span><br><span class="line">def gen():</span><br><span class="line">    e = 3</span><br><span class="line">    while True:</span><br><span class="line">        try:</span><br><span class="line">            p = getPrime(512)</span><br><span class="line">            q = getPrime(512)</span><br><span class="line">            n = p*q</span><br><span class="line">            phi = (p-1)*(q-1)</span><br><span class="line">            d = inverse(e,phi)</span><br><span class="line">            return p,q,d,n,e</span><br><span class="line">        except:</span><br><span class="line">            continue</span><br><span class="line">    return</span><br><span class="line">p,q,d,n,e = gen()</span><br><span class="line">r = getPrime(512)</span><br><span class="line">m = bytes_to_long(flag+os.urandom(32))</span><br><span class="line">M = m%r</span><br><span class="line">c = pow(m,e,n)</span><br><span class="line">print("r = %d"%r)</span><br><span class="line">print("M = %d"%M)</span><br><span class="line">print("n = %d"%n)</span><br><span class="line">print("e = %d"%e)</span><br><span class="line">print("c = %d"%c)</span><br></pre></td></tr></table></figure>
 <p>根据题目已知</p>
 <script type="math/tex; mode=display">
 m=M+k*r\\
 c≡(M+k*r)modn\\</script><p>根据等式使用CopperSmith求解k</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import *</span><br><span class="line">from gmpy2  import *</span><br><span class="line">PR.&lt;x&gt;=PolynomialRing(Zmod(n))</span><br><span class="line">f=(M+x*r)**3-c</span><br><span class="line">f=f.monic()</span><br><span class="line">k=f.small_roots()</span><br><span class="line">m=k[0]*r+M</span><br><span class="line">print(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
 <p><strong>LitCTF2023Euler</strong> <em>2024.4.10</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from secret import flag</span><br><span class="line">m = bytes_to_long(flag)</span><br><span class="line">p = getPrime(512)</span><br><span class="line">q = getPrime(512)</span><br><span class="line">n = p*q</span><br><span class="line">c = pow(m,n-p-q+3,n)</span><br><span class="line">print(f&#x27;n = &#123;n&#125;&#x27;)</span><br><span class="line">print(f&#x27;c = &#123;c&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from secret import flag</span><br><span class="line">m = bytes_to_long(flag)</span><br><span class="line">p = getPrime(512)</span><br><span class="line">q = getPrime(512)</span><br><span class="line">n = p*q</span><br><span class="line">c = pow(m,n-p-q+3,n)</span><br><span class="line">print(f'n = {n}')</span><br><span class="line">print(f'c = {c}')</span><br></pre></td></tr></table></figure>
 <p>根据题目 c = pow(m,n-p-q+3,n)</p>
 <script type="math/tex; mode=display">
 其中，

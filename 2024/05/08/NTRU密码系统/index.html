@@ -77,7 +77,119 @@
   </style>
 </noscript>
 
-</head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -253,7 +365,7 @@
       
         <p>NTRN</p>
 <p>做题遇见了这种密码系统，没见过，写一下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>():</span><br><span class="line">    p = getPrime(<span class="number">2048</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">        y = getPrime(<span class="number">768</span>)</span><br><span class="line">        z = gmpy2.invert(x, p) * y % p</span><br><span class="line">        <span class="keyword">return</span> (p, x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">cipher, p, z</span>):</span><br><span class="line">    message = bytes_to_long(cipher)</span><br><span class="line">    r = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">    c = (r * z + message) % p</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line">p, x, y, z = init()</span><br><span class="line">c = encrypt(flag, p, z)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;cipher.txt&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&quot;binz = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(z)) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    f.write(<span class="string">&quot;binp = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(p)) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    f.write(<span class="string">&quot;binc = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(c)) + <span class="string">&quot;\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>():</span><br><span class="line">    p = getPrime(<span class="number">2048</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">        y = getPrime(<span class="number">768</span>)</span><br><span class="line">        z = gmpy2.invert(x, p) * y % p</span><br><span class="line">        <span class="keyword">return</span> (p, x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">cipher, p, z</span>):</span><br><span class="line">    message = bytes_to_long(cipher)</span><br><span class="line">    r = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">    c = (r * z + message) % p</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line">p, x, y, z = init()</span><br><span class="line">c = encrypt(flag, p, z)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">"cipher.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">"binz = "</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(z)) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"binp = "</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(p)) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"binc = "</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(c)) + <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
 <p>先看了看别人的wp学了一下，然后补补基础知识。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">z=int(binz,2)</span><br><span class="line">p=int(binp,2)</span><br><span class="line">c=int(binc,2)</span><br><span class="line">def decrypto(z,p,c):</span><br><span class="line">    M=Matrix(ZZ,[[1,z],</span><br><span class="line">                 [0,p]])</span><br><span class="line">    x,y=M.LLL()[0]</span><br><span class="line">    print(x,y)</span><br><span class="line">    x=abs(x)</span><br><span class="line">    y=abs(y)</span><br><span class="line">    m=(c*x)%p*int(inverse(x,y))%y</span><br><span class="line">    return m</span><br><span class="line">m=decrypto(z,p,c)</span><br><span class="line">print(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>NTRU公钥密码系统是由Hoffstein, Pipher和 Silverman在1996年所发明的，是目前已知最快的公钥密码系统之一，并且提供加密(NTRUencrypt)和数字签名(NTRUSign)方案。NTRU由多项式的卷积所构成，它基于格上的最短向量问题(SVP)。NTRU采用截断多项式环(Truncated Polynomial Rings)来实现对数据进行加密和解密。</p>
