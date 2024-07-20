@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Elgamal加密原理Rsa是基于大质数分解难题；而Elgamal是基于G上的离散对数难题 局限性：如加密及解密计算量大，密文长度是明文的两倍等 基础知识1.阶有n&gt;1, a与n互质，则必存在一 x（1≤x≤n-1）, 使得a^x &#x3D; 1 mod n 满足等式的最小x称为，a模n的阶，表示为Ord_n(a)  又可知φ(n)是方程一解，但不一定为最小解，当φ(n)为最小解时，称a为n的一个本">
+  <meta name="description" content="Elgamal加密原理 Rsa是基于大质数分解难题；而Elgamal是基于G上的离散对数难题 局限性：如加密及解密计算量大，密文长度是明文的两倍等 基础知识 1.阶 有n&gt;1, a与n互质，则必存在一 x（1≤x≤n-1）, 使得a^x &#x3D; 1 mod n 满足等式的最小x称为，a模n的阶，表示为Ord_n(a) 又可知φ(n)是方程一解，但不一定为最小解，当φ(n)为最小解时，称a为n的一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elgamal加密">
 <meta property="og:url" content="http://example.com/2024/05/29/Elgamal%E5%8A%A0%E5%AF%86/index.html">
 <meta property="og:site_name" content="L_怜锦锦锦の小屋">
-<meta property="og:description" content="Elgamal加密原理Rsa是基于大质数分解难题；而Elgamal是基于G上的离散对数难题 局限性：如加密及解密计算量大，密文长度是明文的两倍等 基础知识1.阶有n&gt;1, a与n互质，则必存在一 x（1≤x≤n-1）, 使得a^x &#x3D; 1 mod n 满足等式的最小x称为，a模n的阶，表示为Ord_n(a)  又可知φ(n)是方程一解，但不一定为最小解，当φ(n)为最小解时，称a为n的一个本">
+<meta property="og:description" content="Elgamal加密原理 Rsa是基于大质数分解难题；而Elgamal是基于G上的离散对数难题 局限性：如加密及解密计算量大，密文长度是明文的两倍等 基础知识 1.阶 有n&gt;1, a与n互质，则必存在一 x（1≤x≤n-1）, 使得a^x &#x3D; 1 mod n 满足等式的最小x称为，a模n的阶，表示为Ord_n(a) 又可知φ(n)是方程一解，但不一定为最小解，当φ(n)为最小解时，称a为n的一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-29T07:05:40.000Z">
 <meta property="article:modified_time" content="2024-06-03T13:20:13.113Z">
@@ -252,17 +252,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Elgamal加密原理"><a href="#Elgamal加密原理" class="headerlink" title="Elgamal加密原理"></a>Elgamal加密原理</h1><p>Rsa是基于大质数分解难题；而Elgamal是基于G上的离散对数难题</p>
+        <h1>Elgamal加密原理</h1>
+<p>Rsa是基于大质数分解难题；而Elgamal是基于G上的离散对数难题</p>
 <p>局限性：如加密及解密计算量大，密文长度是明文的两倍等</p>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h5 id="1-阶"><a href="#1-阶" class="headerlink" title="1.阶"></a>1.阶</h5><p>有n&gt;1, a与n互质，则必存在一 x（1≤x≤n-1）, 使得a^x = 1 mod n</p>
-<p>满足等式的最小x称为，a模n的阶，表示为Ord_n(a) </p>
+<h2 id="基础知识">基础知识</h2>
+<h5 id="1-阶">1.阶</h5>
+<p>有n&gt;1, a与n互质，则必存在一 x（1≤x≤n-1）, 使得a^x = 1 mod n</p>
+<p>满足等式的最小x称为，a模n的阶，表示为Ord_n(a)</p>
 <p>又可知φ(n)是方程一解，但不一定为最小解，当φ(n)为最小解时，称a为n的一个本原元。</p>
-<h2 id="加密过程"><a href="#加密过程" class="headerlink" title="加密过程"></a>加密过程</h2><h5 id="1-密钥生成"><a href="#1-密钥生成" class="headerlink" title="1.密钥生成"></a>1.密钥生成</h5><p>私钥：a    公钥：(p,g,A)</p>
+<h2 id="加密过程">加密过程</h2>
+<h5 id="1-密钥生成">1.密钥生成</h5>
+<p>私钥：a    公钥：(p,g,A)</p>
 <p>选择一个大整数p ，一个g为p的本原元，</p>
 <p>选择一整数a（1≤a≤p-1），计算A = g^a mod p</p>
-<h5 id="2-加密过程"><a href="#2-加密过程" class="headerlink" title="2.加密过程"></a>2.加密过程</h5><p>Alice公开公钥（p,g,A）Bob选择明文M（1&lt;M&lt;p），Bob选择整数k，计算</p>
+<h5 id="2-加密过程">2.加密过程</h5>
+<p>Alice公开公钥（p,g,A）Bob选择明文M（1&lt;M&lt;p），Bob选择整数k，计算</p>
 <p>C1 = g^k mod p   ,   C2 = M*(A^k) mod p   并将（C1，C2）发给Alice。</p>
-<h5 id="3-解密过程"><a href="#3-解密过程" class="headerlink" title="3.解密过程"></a>3.解密过程</h5><p>Alice收到（C1，C2），使用a进行解密。</p>
+<h5 id="3-解密过程">3.解密过程</h5>
+<p>Alice收到（C1，C2），使用a进行解密。</p>
 <p>M = C2 / C1^a mod p</p>
 
     </div>
@@ -348,7 +355,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elgamal%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Elgamal加密原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%98%B6"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.阶</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">加密过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90"><span class="nav-number">1.2.0.0.1.</span> <span class="nav-text">1.密钥生成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.0.0.2.</span> <span class="nav-text">2.加密过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.0.0.3.</span> <span class="nav-text">3.解密过程</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Elgamal加密原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%98%B6"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.阶</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">加密过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90"><span class="nav-number">1.2.0.0.1.</span> <span class="nav-text">1.密钥生成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.0.0.2.</span> <span class="nav-text">2.加密过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.0.0.3.</span> <span class="nav-text">3.解密过程</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
