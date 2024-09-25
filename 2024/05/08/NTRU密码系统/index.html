@@ -25,7 +25,119 @@ document.addEventListener("pjax:success", initScrollReveal);
   const setting = localStorage.getItem('darken-mode') || 'auto'
   if (setting === 'dark' || (prefersDark && setting !== 'light'))
     document.documentElement.classList.toggle('dark', true)
-})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+})()</script><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
 IconifyProviders = {
   // Empty prefix: overwrite default API provider configuration
   '': {
@@ -38,7 +150,7 @@ IconifyProviders = {
   },
 };</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="1i4njin"><img width="96" loading="lazy" src="/images/profilePicture.jpg" alt="1i4njin"><span class="site-author-status" title="最合理的一集">😋</span></a><div class="site-author-name"><a href="/about/">1i4njin</a></div><span class="site-name">1i4njinのbl0g</span><sub class="site-subtitle"></sub><div class="site-description"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">16</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">0</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">8</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/lianjin04" title="GitHub" target="_blank" style="color:#6e5494"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/424571864" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="lianjin0404@outlook.com" title="E-Mail" target="_blank" style="color:#8E71C1"><span class="icon iconify" data-icon="ri:mail-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://blog.csdn.net/qq_66677764" title="CSDN" target="_blank" style="color:#FF8C00"><span class="icon iconify" data-icon="tabler:circle-letter-c"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/42-23-68-34" title="知乎" target="_blank" style="color:#1E90FF"><span class="icon iconify" data-icon="ri:zhihu-line"></span></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><span class="icon iconify" data-icon="ri:genderless-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#6200ee;"><link itemprop="mainEntityOfPage" href="https://lianjinlll.cn/2024/05/08/NTRU%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="1i4njin"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="1i4njinのbl0g"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">NTRU密码系统</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="创建时间：2024-05-08 14:24:42" itemprop="dateCreated datePublished" datetime="2024-05-08T14:24:42+08:00">2024-05-08</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="修改时间：2024-05-21 21:37:07" itemprop="dateModified" datetime="2024-05-21T21:37:07+08:00">2024-05-21</time></div><div class="post-classify"><span class="post-tag"><a class="tag-item" href="/tags/Crypto/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Crypto</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><p>NTRN</p>
 <p>做题遇见了这种密码系统，没见过，写一下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>():</span><br><span class="line">    p = getPrime(<span class="number">2048</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">        y = getPrime(<span class="number">768</span>)</span><br><span class="line">        z = gmpy2.invert(x, p) * y % p</span><br><span class="line">        <span class="keyword">return</span> (p, x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">cipher, p, z</span>):</span><br><span class="line">    message = bytes_to_long(cipher)</span><br><span class="line">    r = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">    c = (r * z + message) % p</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line">p, x, y, z = init()</span><br><span class="line">c = encrypt(flag, p, z)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;cipher.txt&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&quot;binz = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(z)) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    f.write(<span class="string">&quot;binp = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(p)) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    f.write(<span class="string">&quot;binc = &quot;</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(c)) + <span class="string">&quot;\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>():</span><br><span class="line">    p = getPrime(<span class="number">2048</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">        y = getPrime(<span class="number">768</span>)</span><br><span class="line">        z = gmpy2.invert(x, p) * y % p</span><br><span class="line">        <span class="keyword">return</span> (p, x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">cipher, p, z</span>):</span><br><span class="line">    message = bytes_to_long(cipher)</span><br><span class="line">    r = getRandomNBitInteger(<span class="number">1024</span>)</span><br><span class="line">    c = (r * z + message) % p</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line">p, x, y, z = init()</span><br><span class="line">c = encrypt(flag, p, z)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">"cipher.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">"binz = "</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(z)) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"binp = "</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(p)) + <span class="string">"\n"</span>)</span><br><span class="line">    f.write(<span class="string">"binc = "</span> + <span class="built_in">str</span>(<span class="built_in">bin</span>(c)) + <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>先看了看别人的wp学了一下，然后补补基础知识。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">z=int(binz,2)</span><br><span class="line">p=int(binp,2)</span><br><span class="line">c=int(binc,2)</span><br><span class="line">def decrypto(z,p,c):</span><br><span class="line">    M=Matrix(ZZ,[[1,z],</span><br><span class="line">                 [0,p]])</span><br><span class="line">    x,y=M.LLL()[0]</span><br><span class="line">    print(x,y)</span><br><span class="line">    x=abs(x)</span><br><span class="line">    y=abs(y)</span><br><span class="line">    m=(c*x)%p*int(inverse(x,y))%y</span><br><span class="line">    return m</span><br><span class="line">m=decrypto(z,p,c)</span><br><span class="line">print(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
@@ -47,7 +159,7 @@ IconifyProviders = {
 
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>NTRU公钥密码系统是由Hoffstein, Pipher和 Silverman在1996年所发明的，是目前已知最快的公钥密码系统之一，并且提供加密(NTRUencrypt)和数字签名(NTRUSign)方案。NTRU由多项式的卷积所构成，它基于格上的最短向量问题(SVP)。NTRU采用截断多项式环(Truncated Polynomial Rings)来实现对数据进行加密和解密。</p>
 <p>RSA,ECC和ElGamal等公钥密码系统的安全性是基于大整数分解难题或离散对数问题，这些数学问题很容易被量子计算机攻破。因此在可预见的未来它们有被破解的风险。而NTRU在原理上，可以被认为是能够抵抗量子计算机攻击的，这是NTRU密码系统的优势之一。因为NTRU的安全性是基于SVP问题，而目前还没有算法可以在多项式时间内解决这个问题。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><strong>1.多项式环</strong><br>$$<br>f(x)&#x3D;<br>$$</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><strong>1.多项式环</strong><br><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="6.687ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2955.8 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></g><g data-mml-node="mo" transform="translate(550,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(939,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(1511,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(2177.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g></g></g></svg></mjx-container></p>
 </div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">沃 很可爱 请给我钱</div><div id="qr" style="display:none;"><div style="display:inline-block"></div><div style="display:inline-block"></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>1i4njin</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://lianjinlll.cn/2024/05/08/NTRU%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/" title="NTRU密码系统">https://lianjinlll.cn/2024/05/08/NTRU%E5%AF%86%E7%A0%81%E7%B3%BB%E7%BB%9F/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2024/05/09/CryptoHack%E9%83%A8%E5%88%86%E9%A2%98%E7%9B%AE%E8%AE%B0%E5%BD%95/" rel="prev" title="CryptoHack-GENERAL"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">CryptoHack-GENERAL</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2024/04/13/Crypto-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-2/" rel="next" title="Crypto 每日一题[2]"><span class="post-nav-text">Crypto 每日一题[2]</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2024 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 1i4njin</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#6200ee" stroke-width="2" stroke-linecap="round"></circle></svg></a><script src="https://fastly.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script>const images = [...document.querySelectorAll('.markdown-body img')]
 mediumZoom(images)</script><style>.medium-zoom-image {
   z-index: 99;
