@@ -274,7 +274,7 @@ Polynomial Rings)来实现对数据进行加密和解密。</p>
 <p>使用网站解密 <a href="https://www.guballa.de/vigenere-solver">Vigenere Solver |
 guballa.de</a></p>
 <figure>
-<img src="D:\Blog\source\images\image-20241020220114192.png" alt="image-20241020220114192" loading="lazy">
+<img src="/images\image-20241020220114192.png" alt="image-20241020220114192" loading="lazy">
 <figcaption aria-hidden="true">image-20241020220114192</figcaption>
 </figure>
 <p>密钥为：<code>subtitution</code></p>
@@ -303,7 +303,7 @@ guballa.de</a></p>
 <p>将其中爆破e的部分改为爆破t1，t2即可，大概20分钟左右解出</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm </span><br><span class="line">e =  <span class="number">683</span></span><br><span class="line">c1 = ...</span><br><span class="line">c2 = ...</span><br><span class="line">n = ...</span><br><span class="line">delta = ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">franklinReiter</span>(<span class="params">n,e,c1,c2,t1,t2</span>):</span><br><span class="line">    PR.&lt;x&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">    g1 = (x+t1)^e - c1</span><br><span class="line">    g2 = (x+t2)^e - c2</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">gcd</span>(<span class="params">g1, g2</span>):</span><br><span class="line">        <span class="keyword">while</span> g2:</span><br><span class="line">            g1, g2 = g2, g1 % g2</span><br><span class="line">        <span class="keyword">return</span> g1.monic()</span><br><span class="line">    <span class="keyword">return</span> -gcd(g1, g2)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t1 <span class="keyword">in</span> tqdm(<span class="built_in">range</span>(<span class="number">255</span>,<span class="number">1</span>,-<span class="number">1</span>)):</span><br><span class="line">    <span class="keyword">for</span> t2 <span class="keyword">in</span> tqdm(<span class="built_in">range</span>(<span class="number">255</span>,<span class="number">1</span>,-<span class="number">1</span>)):</span><br><span class="line">        m=franklinReiter(n,e,c1,c2,t1*delta%n,t2*delta%n)</span><br><span class="line">        flag = long_to_bytes(<span class="built_in">int</span>(m))</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b'{'</span> <span class="keyword">in</span> flag <span class="keyword">and</span> <span class="string">b'}'</span> <span class="keyword">in</span> flag:</span><br><span class="line">            <span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="D:\Blog\source\images\image-20241020224213311.png" alt="image-20241020224213311" loading="lazy">
+<img src="/images\image-20241020224213311.png" alt="image-20241020224213311" loading="lazy">
 <figcaption aria-hidden="true">image-20241020224213311</figcaption>
 </figure>
 <h1 id="这是几次方-疑惑">这是几次方？ 疑惑！</h1>

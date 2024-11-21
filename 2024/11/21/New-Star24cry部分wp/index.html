@@ -15,15 +15,15 @@ document.addEventListener("pjax:success", initScrollReveal);
 <meta property="og:site_name" content="1i4njinのbl0g">
 <meta property="og:description" content="没e也能玩 直接了当的dp,dq泄露攻击，不需要e 12345678910p &#x3D; getPrime(1024)q &#x3D; getPrime(1024)d &#x3D; inverse(65537,(p-1)*(q-1))dp &#x3D; d %(p-1)dq &#x3D; d%(q-1)print(f&#39;c&#x3D;{pow(bytes_to_long(flag),e,p*q)}&#39;)print(f&#39;p&#x3D;{p}&#39;)print(f&#39;q&#x3D;{">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:\Blog\source\images\image-20241020220114192.png">
-<meta property="og:image" content="d:\Blog\source\images\image-20241020224213311.png">
+<meta property="og:image" content="https://lianjinlll.cn/images/image-20241020220114192.png">
+<meta property="og:image" content="https://lianjinlll.cn/images/image-20241020224213311.png">
 <meta property="article:published_time" content="2024-11-21T11:42:57.000Z">
-<meta property="article:modified_time" content="2024-11-21T11:46:07.674Z">
+<meta property="article:modified_time" content="2024-11-21T12:08:59.726Z">
 <meta property="article:author" content="1i4njin">
 <meta property="article:tag" content="Crypto">
 <meta property="article:tag" content="wp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:\Blog\source\images\image-20241020220114192.png"><script>(function() {
+<meta name="twitter:image" content="https://lianjinlll.cn/images/image-20241020220114192.png"><script>(function() {
   if (CONFIG.mode !== 'auto') return
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
   const setting = localStorage.getItem('darken-mode') || 'auto'
@@ -183,7 +183,7 @@ IconifyProviders = {
 <p>使用网站解密 <a target="_blank" rel="noopener" href="https://www.guballa.de/vigenere-solver">Vigenere Solver |
 guballa.de</a></p>
 <figure>
-<img src="D:\Blog\source\images\image-20241020220114192.png" alt="image-20241020220114192" loading="lazy">
+<img src="/images\image-20241020220114192.png" alt="image-20241020220114192" loading="lazy">
 <figcaption aria-hidden="true">image-20241020220114192</figcaption>
 </figure>
 <p>密钥为：<code>subtitution</code></p>
@@ -212,7 +212,7 @@ guballa.de</a></p>
 <p>将其中爆破e的部分改为爆破t1，t2即可，大概20分钟左右解出</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm </span><br><span class="line">e =  <span class="number">683</span></span><br><span class="line">c1 = ...</span><br><span class="line">c2 = ...</span><br><span class="line">n = ...</span><br><span class="line">delta = ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">franklinReiter</span>(<span class="params">n,e,c1,c2,t1,t2</span>):</span><br><span class="line">    PR.&lt;x&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">    g1 = (x+t1)^e - c1</span><br><span class="line">    g2 = (x+t2)^e - c2</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">gcd</span>(<span class="params">g1, g2</span>):</span><br><span class="line">        <span class="keyword">while</span> g2:</span><br><span class="line">            g1, g2 = g2, g1 % g2</span><br><span class="line">        <span class="keyword">return</span> g1.monic()</span><br><span class="line">    <span class="keyword">return</span> -gcd(g1, g2)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t1 <span class="keyword">in</span> tqdm(<span class="built_in">range</span>(<span class="number">255</span>,<span class="number">1</span>,-<span class="number">1</span>)):</span><br><span class="line">    <span class="keyword">for</span> t2 <span class="keyword">in</span> tqdm(<span class="built_in">range</span>(<span class="number">255</span>,<span class="number">1</span>,-<span class="number">1</span>)):</span><br><span class="line">        m=franklinReiter(n,e,c1,c2,t1*delta%n,t2*delta%n)</span><br><span class="line">        flag = long_to_bytes(<span class="built_in">int</span>(m))</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b'{'</span> <span class="keyword">in</span> flag <span class="keyword">and</span> <span class="string">b'}'</span> <span class="keyword">in</span> flag:</span><br><span class="line">            <span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="D:\Blog\source\images\image-20241020224213311.png" alt="image-20241020224213311" loading="lazy">
+<img src="/images\image-20241020224213311.png" alt="image-20241020224213311" loading="lazy">
 <figcaption aria-hidden="true">image-20241020224213311</figcaption>
 </figure>
 <h1 id="这是几次方-疑惑">这是几次方？ 疑惑！</h1>
