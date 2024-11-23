@@ -282,7 +282,7 @@
 <h1 id="故事新编1">故事新编1</h1>
 <p>使用网站解密 <a href="https://www.guballa.de/vigenere-solver">Vigenere Solver |
 guballa.de</a></p>
-<p><img src="../images/image-20241020220114192.png" loading="lazy"></p>
+<p><img src="/images/image-20241020220114192.png" loading="lazy"></p>
 <p>密钥为：<code>subtitution</code></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from hashlib import md5</span><br><span class="line"></span><br><span class="line">words='''</span><br><span class="line">BEAUTIFUL IS BETTER THAN UGLY.</span><br><span class="line">EXPLICIT IS BETTER THAN IMPLICIT.</span><br><span class="line">SIMPLE IS BETTER THAN COMPLEX.</span><br><span class="line">COMPLEX IS BETTER THAN COMPLICATED.</span><br><span class="line">FLAT IS BETTER THAN NESTED.</span><br><span class="line">SPARSE IS BETTER THAN DENSE.</span><br><span class="line">FLAGA IS VEGENERE</span><br><span class="line">READABILITY COUNTS.</span><br><span class="line">SPECIAL CASES AREN'T SPECIAL ENOUGH TO BREAK THE RULES.</span><br><span class="line">ALTHOUGH PRACTICALITY BEATS PURITY.</span><br><span class="line">ERRORS SHOULD NEVER PASS SILENTLY.</span><br><span class="line">UNLESS EXPLICITLY SILENCED.</span><br><span class="line"></span><br><span class="line">'''</span><br><span class="line">flag = b'flag{'+md5(words.encode()).hexdigest().encode()+b'}'</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
 <p>`<em>flag{bda2bcf1eaeff7754a6483e74e70a937}</em></p>
