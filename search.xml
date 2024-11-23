@@ -282,7 +282,7 @@
 <h1 id="故事新编1">故事新编1</h1>
 <p>使用网站解密 <a href="https://www.guballa.de/vigenere-solver">Vigenere Solver |
 guballa.de</a></p>
-<p><img src="/image-20241020220114192.png" loading="lazy"></p>
+<p><img src="/images/image-20241020220114192.png" loading="lazy"></p>
 <p>密钥为：<code>subtitution</code></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from hashlib import md5</span><br><span class="line"></span><br><span class="line">words='''</span><br><span class="line">BEAUTIFUL IS BETTER THAN UGLY.</span><br><span class="line">EXPLICIT IS BETTER THAN IMPLICIT.</span><br><span class="line">SIMPLE IS BETTER THAN COMPLEX.</span><br><span class="line">COMPLEX IS BETTER THAN COMPLICATED.</span><br><span class="line">FLAT IS BETTER THAN NESTED.</span><br><span class="line">SPARSE IS BETTER THAN DENSE.</span><br><span class="line">FLAGA IS VEGENERE</span><br><span class="line">READABILITY COUNTS.</span><br><span class="line">SPECIAL CASES AREN'T SPECIAL ENOUGH TO BREAK THE RULES.</span><br><span class="line">ALTHOUGH PRACTICALITY BEATS PURITY.</span><br><span class="line">ERRORS SHOULD NEVER PASS SILENTLY.</span><br><span class="line">UNLESS EXPLICITLY SILENCED.</span><br><span class="line"></span><br><span class="line">'''</span><br><span class="line">flag = b'flag{'+md5(words.encode()).hexdigest().encode()+b'}'</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
 <p>`<em>flag{bda2bcf1eaeff7754a6483e74e70a937}</em></p>
@@ -345,8 +345,7 @@ Needham于1994年发明的加密算法。特点是加密解密速度快，实现
 <p>tea 算法明文分组为 64bit(8byte)，采用 128bit(16byte) 作为
 key，算法采用迭代的形式，推荐的迭代轮数是 64轮，最少 32 轮。</p>
 <h2 id="二算法原理">二，算法原理</h2>
-<p>流程如下：</p>
-<p><img src="../images/image-20240722224749659.png" loading="lazy"></p>
+<p>流程如下<img src="/images/image-20240722224749659.png" loading="lazy"></p>
 <p><strong>1，初始化</strong>：</p>
 <p>将明文分成两个32位的块（通常是64位的明文分成两个32位的部分</p>
 <p>将128位的密钥分成四个32位的子密钥</p>
